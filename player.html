@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2809/2809590.png">
+    <title>NahWatch</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navitem">
+            <a href="#">
+                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2809/2809590.png" alt="NahWatch">
+            </a>
+        </div>
+        <div class="navitem">
+            <button class="navbutton" onclick="window.location.href='./series.html'">Series</button>
+        </div>
+        <div class="navitem">
+            <button class="navbutton" onclick="window.location.href='./movie.html'">Movies</button>
+        </div>
+        <div class="title-container">
+            <h1 class="navtitle">NahWatch</h1>
+            <h1 class="media-type"></h1>
+        </div>
+        <div>
+        </div>
+    </header>
+    <div class="items">
+        <div class="cards">
+            <div class="image-container">
+                <img class="back-img">
+                <h1 class="overlay-text">Movie Name Unavailable...</h1>
+            </div>
+            <div class="rating">
+                <img src="https://cdn-icons-png.flaticon.com/512/541/541415.png" class="icon" alt="Rating">
+                <h3 class="vote-count"></h3>
+                <h3 class="rating-data">Movie Rating Unavailable...</h3>
+                
+            </div>
+            <div class="description">
+                <div class="info-header">Movie Info Unavailable...</div>
+                <p class="movie-data"> Movie Overview Unavailable...</p>
+            </div>
+            <div id ="selection"></div>
+            <div class="player-container">
+                <iframe class="player" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"></iframe>
+            </div>
+            <div class="player-buttons">
+                <button class="switch-type" onclick="switchToImdb();">Doesn't Work #1? Try Pressing Me!</button>
+                <button class="switch-type" onclick="document.getElementById('requestModal').style.display = 'block';">Doesn't Work #2? Submit a Request!</button>
+                <button class="switch-type" >Doesn't Work #3? Idk man...</button>
+            </div>
+            </div>
+            <script src="script.js"></script>
+            <script>window.onload = loadMoviePage;</script>   
+            <div class="item-list">
+                <div class="system-messages">
+                    <img src="https://cdn-icons-png.flaticon.com/512/62/62017.png" class="icon" alt="">
+                    <h1>System Messages</h1>
+                    <div class="message-content">
+                        <p>Hello, this website is pretty cool, right??</p>
+                        <p>You should know that some content might be<br>[-]Unavailable<br>[-]Low Quality<br>[-]General BS...</p>
+                    </div>
+                </div>
+            </div>
+        <footer class="bottom-bar">
+            <p>© 2023 NAHWATCH. All rights reserved to original creators.<br>"This nonprofit streaming website was meticulously crafted by Ben David Ivgi to provide you with an exceptional entertainment experience. Explore our extensive collection of movies and series, and embark on a cinematic journey like never before."(ChatGPT, 2023)</p>
+        </footer>
+        <div id="requestModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="document.getElementById('requestModal').style.display='none';" id="closeModal">&times;</span>
+                <h2>Submit a Request</h2>
+                <p>This form allows you to privatly ask NahWatch's admin for a movie or a series. It might help. It might not. </p>
+                <form id="requestForm">
+                    <label for="senderName">Sender Name:</label>
+                    <input type="text" id="senderName" name="senderName" required><br><br>
+                    
+                    <label for="description">Description:</label><br>
+                    <textarea id="description" name="description" rows="4" required></textarea><br><br>
+                    
+                    <button type="submit" id="submitButton" onclick="sendMediaRequest();">Send</button>
+                </form>
+            </div>
+        </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const requestForm = document.getElementById('requestForm');
+                requestForm.addEventListener('submit', (event) => {
+                    event.preventDefault();
+                    const senderName = document.getElementById('senderName').value;
+                    const description = document.getElementById('description').value;
+                    const modal = document.getElementById('requestModal');
+
+                    document.getElementById('senderName').value = '';
+                    document.getElementById('description').value = '';
+                    modal.style.display = 'none'; 
+                });
+            });
+        </script>
+        
+</body>
+</html>

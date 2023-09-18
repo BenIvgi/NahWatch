@@ -1,0 +1,508 @@
+.navbar {
+    content: "";
+    display: table;
+    clear: both;
+    width: 100%;
+    height: 35%;
+    border-color: #762bf0;
+    background-color:#373737;
+    margin-bottom: 10px;
+}
+
+.rating {
+    content: "";
+    display: table;
+    clear: both;
+    width: 27%;
+    height: 1%;
+    border-radius: 5px;
+    background-color: #9f5af8;
+    margin: 5px;
+}
+
+.rating .icon {
+    margin: 5px;
+}
+
+.vote-count {
+    float: right;
+    color:#eeeeee;
+    font-size: large;
+    text-align:right;
+    padding-right: 5px;
+    margin-top: 20px;
+}
+
+.rating-data{
+    float: right;
+    color:#eeeeee;
+    font-size: xx-large;
+    margin: 8px 5px 5px 5px;
+    padding-right: 5px;
+}
+
+.description {
+    font-size: larger;
+    color: whitesmoke;
+    margin: 10px;
+    background-color: #121212;
+    padding: 5px;
+    border-radius: 3px;
+    min-height: 10%;
+
+}
+
+.info-header{
+    background-color: #575757;
+    border-radius: 3px;
+    margin: 5px;
+    color: whitesmoke;
+    text-align: center;
+}
+
+/* Add your CSS styles for the modal here */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    animation-name: slideUp;
+    animation-duration: 0.3s;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+
+.modal-content {
+    background-color:#121212;
+    position: absolute;
+    color:#c3b1e0;
+    margin: 15% auto;
+    padding: 20px;
+    width: 50%;
+    height: 80%;
+    border-radius: 5px;
+    top: 5%;
+    left:20%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.modal .close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal form {
+    text-align: center;
+}
+
+.modal label {
+    font-weight: bold;
+}
+
+.modal textarea, .modal input {
+    width: 100%;
+    color: white;
+    background-color: #9f5af8;
+}
+
+.system-messages {
+    background-color: #575757;
+    border-radius: 5px;
+    margin: 3%;
+    width: 94%;
+    height: 25%;
+}
+
+.message-content{
+    background-color: #4907b4;
+    color:#282828;
+    border-radius: 5px;
+    margin: 3%;
+    width: 94%;
+    height: 82%;
+}
+
+.message-content p{
+    margin: 5px;
+    color: whitesmoke;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: larger;
+}
+
+.player-buttons {
+    content: "";
+    display: table;
+    clear: both;
+    width: 48%;
+    height: 4%;
+    align-items: center;
+    border-radius: 10px;
+    margin-left: 16%;
+    margin-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color:#121212;
+}
+
+.player {
+    width: 100%;
+    height: 100%;
+}
+
+.series-selector {
+    height: 80px;
+    width: 93%;
+    margin: 0% 2.5% 0% 2.5% ;
+    background-color:#575757;
+    border-radius: 10px;
+}
+
+.system-messages h1{
+    font-family: 'Arial', sans-serif;
+    color:#9f5af8;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 30px;
+}
+
+.message-content h2, h3{
+    font-family: 'Arial', sans-serif;
+    color: whitesmoke;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    letter-spacing: 1px;
+    margin: 10px;
+}
+
+.media-type{
+    font-family: 'Arial', sans-serif;
+    color:#9f5af8;
+    font-size: 35px;
+    text-align: center; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    float: right;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+.back-img {
+    height: 40%;
+    width: 100%;
+    mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+   -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+}
+
+.overlay-text {
+    position: absolute; /* Position the text relative to the container */
+    top: 85%; /* Adjust vertical position as needed */
+    left: 0%; /* Adjust horizontal position as needed */
+    transform: translate(0%, -20%); /* Center the text within the container */
+    color: white; /* Text color */
+    padding: 10px; /* Add padding to the text for better readability */
+    font-size: 50px; /* Adjust the font size as needed */
+    font-weight: bold; /* Adjust font weight as needed */
+  }
+
+  .bottom-bar p{
+    margin: 10px;
+    font-size: x-large;
+  }
+
+.bottom-bar {
+    content: "";
+    display: table;
+    clear: both;
+    width: 98.8%;
+    height: 5%;
+    border-color: #762bf0;
+    background-color:#282828;
+    margin: 10px;
+    border-radius: 5px;
+    position: absolute;
+    color: whitesmoke;
+    bottom: 0;
+}
+
+.items {
+    display: table;
+    width: 97.7%;
+    height: 245%;
+    border-color: #762bf0;
+    background-color:#373737;
+    position: absolute;
+    bottom: 100;
+    
+}
+
+.item-list {
+    float: right;
+    background-color: #282828;
+    margin: 10px 10px 10px 10px;
+    width: 23%;
+    height: 91%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.cards {
+    float: left;
+    margin: 10px;
+    background-color: #282828;
+    width: 73%;
+    height: 91%;
+    border-radius: 5px;
+    display: block;
+}
+
+.row {
+    height: 25%;
+    margin: 15px;
+    
+}
+
+/* Style the select element with the .selector class */
+select {
+    width: 450px; /* Adjust the width as needed */
+    margin: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:#762bf0;
+    cursor: pointer;
+    appearance: none; /* Remove default arrow icon in some browsers */
+  }
+  
+  /* Style the dropdown arrow icon (if not removed) */
+  select::after {
+    content: '\25BC'; /* Unicode arrow-down character */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none; /* Ensure the arrow doesn't interfere with clicks */
+  }
+  
+  /* Style the option elements within the select */
+  select option {
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  /* Style the select when it's focused */
+  select:focus {
+    outline: none;
+    border-color: #007bff; /* Change the border color on focus */
+  }
+  .card {
+    float: left;
+    width: 20%;
+    height: 80%;
+    max-width: 20%;
+    max-height: 80%;
+    background-color: #4907b4;
+    border-radius: 10px;
+    margin: 20px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    transition: background-color 1.3s ease, transform 0.7s ease;
+}
+
+
+.card:hover {
+    background-color: #9f5af8;
+    cursor:pointer;
+    transform: scale(1.02);
+
+}
+
+.card:active{
+    cursor: wait;
+}
+
+
+.data {
+    margin: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: large;
+    max-height: 20%;
+    max-width: 80%;
+    overflow: hidden;
+}
+
+.poster {
+    width: 80%; /* 80% of parent's width */
+  height: 70%; /* 70% of parent's height */
+  max-width: 100%; /* Ensure the image doesn't exceed the parent's width */
+  max-height: 100%; /* Ensure the image doesn't exceed the parent's height */
+  position: absolute; /* Position the image within the parent */
+  top: 60%; /* Center vertically by moving it 50% down from the top */
+  left: 50%; /* Center horizontally by moving it 50% from the left */
+  transform: translate(-50%, -50%); /* Center the image precisely */
+  border-radius: 5px;
+}
+
+.navitem {
+    float: left;
+    margin: 10px;
+}
+
+.search-conatiner {
+    float: right;
+    padding: 10px;
+}
+
+.search-bar {
+    padding-left: 10px;
+    padding-right: 10px;
+    color:#282828;
+    background-color: #c3b1e0;
+    width: 220px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #282828;
+    border-width: 0px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.search-button, .modal button[type="submit"]{
+    color:#eeeeee;
+    cursor: pointer;
+    background-color: #4907b4;
+    width: 75px;
+    height: 43px;
+    border-radius: 10px;
+    border-color: #282828;
+    border-width: 0px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: transform 0.7s ease, color 0.7s ease, background-color 0.7s ease;
+}
+
+.search-button:hover, .modal button[type="submit"]:hover {
+    transform: scale(1.01);
+    font-size: 104%;
+    background-color: #eeeeee;
+    color:#4907b4;
+}
+
+.player-container{
+    width: 98%;
+    height: 33%;
+    margin: 10px;
+    background: url('https://blog.stackfindover.com/wp-content/uploads/2021/09/Rocket-Loading-Screen.gif');
+}
+
+.switch-type {
+    color:#eeeeee;
+    background-color: #4907b4;
+    width: 150px;
+    height: 45px;
+    margin: 10px;
+    border-radius: 10px;
+    border-color: #282828;
+    border-width: 0px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: transform 0.7s ease, color 0.7s ease, background-color 0.7s ease;
+}
+
+.switch-type:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+    font-size: 104%;
+    background-color: #eeeeee;
+    color:#4907b4;
+}
+
+
+.search-button:active {
+    transform: scale(0.95);
+    cursor: wait;
+}
+
+
+.navbutton {
+    color:#eeeeee;
+    cursor: pointer;
+    background-color: #4907b4;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #282828;
+    border-width: 0px;
+    font-size: 16px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: 0.7s ease;
+}
+
+.navbutton:hover {
+    transform: scale(1.01);
+    font-size: 104%;
+    background-color: #eeeeee;
+    color:#4907b4;
+}
+
+.navbutton:active {
+    transform: scale(0.95);
+    cursor: wait;
+}
+
+.icon {
+    height: 40px;
+    width: auto;
+    float: left;
+}
+
+.navtitle {
+    font-family: 'Arial', sans-serif;
+    color: #762bf0;
+    font-size: 55px;
+    text-align: center; 
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    margin-left: 100px;
+    bottom: 30px;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+.title-container {
+    float: left;
+    display: flex;
+    height: 50px;
+    width: 760px;
+}
+
+body {
+    background-color: #121212;
+    padding: 10px;
+}
+
+.image-container {
+    position: relative; /* Required for positioning the text relative to the container */
+    display: inline-block; /* Maintain the image's size */
+  }
