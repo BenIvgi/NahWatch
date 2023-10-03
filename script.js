@@ -1,61 +1,35 @@
-function searchMedia(type) {
+async function searchMedia(type) {
   // Get the input element's value
   var movieName = document.getElementById("search").value;
   const apiKey = '0e9ade0abf158102c2f0931986405190';
-  const searchUrl = `https://api.themoviedb.org/3/search/`+type+`?api_key=${apiKey}&query=${encodeURIComponent(movieName)}`;
+  const searchUrl = `https://api.themoviedb.org/3/search/${type}?api_key=${apiKey}&query=${encodeURIComponent(movieName)}`;
 
-  document.getElementsByClassName("cards")[0].innerHTML = '';
-fetch(searchUrl)
-.then(response => response.json())
-.then(data => {
+  initItemsContainer();
+  addLoadingIcon();
+  const results = await getPage(type, searchUrl);
+  if(results.length == 0){
+    results.push(createNotFound());
+  }
+  initItemsContainer();
   let row = document.createElement("div");
   row.className = "row";
   document.getElementsByClassName("cards")[0].appendChild(row);
-  data.results.forEach(result => {
-  const movieId = result.id;
-  const movieDetailsUrl = `https://api.themoviedb.org/3/`+type+`/${movieId}?api_key=${apiKey}`;
 
-  fetch(movieDetailsUrl)
-    .then(response => response.json())
-    .then(movieData => {
-        if(movieData?.poster_path && movieData && (movieData?.title || movieData?.name) &&
-        checkForMovieResults(type === 'tv' ? ('series', movieData?.name)  : (type, movieData?.title))){
-          let card = document.createElement("div");
-        card.className = "card";
-        card.onclick = () => {
-          window.location.href = buildUrl('./player.html', {type: type, tmdb: movieId, imdb: movieData.imdb_id});
-        }
-        let cardData = document.createElement("div");
-        let poster = document.createElement("img");
-        poster.src = "https://image.tmdb.org/t/p/original/" + movieData.poster_path;
-        poster.className = "poster";
-        card.appendChild(poster);
-        cardData.className = "data"
-        cardData.innerText = (type === 'tv' ? movieData.name : movieData.title) + "\nRating: " + movieData.vote_average.toFixed(1) + "/10";
-        card.appendChild(cardData);
-        const rows = document.getElementsByClassName("row");
-        rows[rows.length -1].appendChild(card);
-        if(rows[rows.length -1].length == 4){
-          let row = document.createElement("div");
-          row.className = "row";
-          document.getElementsByClassName("cards")[0].appendChild(row);
-        }
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching movie details:', error);
-    });
-    
+  for(let i = 0; i<results.length; i++){
+    const rows = document.getElementsByClassName("row");
+
+    if(rows[rows.length -1].getElementsByClassName("card").length == 4){
+      let row = document.createElement("div");
+      row.className = "row";
+      document.getElementsByClassName("cards")[0].appendChild(row);
+    }
+
+    rows[rows.length - 1].appendChild(results[i]);
   }
-);
-})
-.catch(error => {
-  console.error('Error searching for movie:', error);
-});
 }
 
-function checkForMovieResults(type, movieName) {
-  const url = `https://databasegdriveplayer.xyz/${type}.php?s=${encodeURIComponent(movieName)}`;
+function checkForMovieResults(type, movieName, movieid) {
+  const url = `https://databasegdriveplayer.xyz/${type}.php?s=${encodeURIComponent(movieName.toLowerCase())}`;
 
     // Fetch the HTML content of the webpage
     const isOk = fetch(url)
@@ -66,9 +40,7 @@ function checkForMovieResults(type, movieName) {
       tempElement.innerHTML = htmlText;
       // Find the table element
       const resultsTable = tempElement.getElementsByTagName('table')[0];
-      // Check if the table has any rows
-      const rows = resultsTable.getElementsByTagName('tr');
-      return rows.length > 1;
+      return resultsTable.innerHTML.includes(`${movieid}`);
     })
     .catch (error =>{
     console.error('Error:', error);
@@ -86,85 +58,121 @@ Number.prototype.padLeft = function(base,chr){
   return len > 0? new Array(len).join(chr || '0')+this : this;
 }
 
-function createSystemMessage(time, text, header) {
-  const msgBox = document.getElementsByClassName("message-content")[0];
-  msgBox.innerHTML = '';
-  const msgHeader = document.createElement('h2');
-  const msgTime = document.createElement('h3');
-  const msgText = document.createElement('p');
-  msgHeader.innerText = header.toProperCase();
-  msgText.innerText = text;
-  msgTime.innerText = time;
-  msgBox.appendChild(msgHeader);
-  msgBox.appendChild(msgTime);
-  msgBox.appendChild(msgText);
+function initItemsContainer(){
+  document.getElementsByClassName("cards")[0].innerHTML = '';
 }
 
-function getTrending(type) {
-  const d = new Date
-  createSystemMessage(
-    [(d.getMonth()+1).padLeft(),
-      d.getDate().padLeft()].join('/') +' ' +
-     [d.getHours().padLeft(),
-      d.getMinutes().padLeft()].join(':'),
-      "Hello. this is a text message. hope you like it here so far!!",
-      "test message for system messages"
-  );
-  const apiKey = '0e9ade0abf158102c2f0931986405190';
-  const searchUrl = `https://api.themoviedb.org/3/trending/`+type+`/day?api_key=${apiKey}`;
+function addLoadingIcon(){
+  let loadingIcon = document.createElement("img");
+  loadingIcon.src = "https://media3.giphy.com/media/twn3qOrkv9KBGgn0bc/giphy.gif?cid=6c09b95263zd9qo314g6kd3m623ecqa1lt74i0cuqwxnlu01&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s";
+  loadingIcon.className = "loading-icon";
+  document.getElementsByClassName("cards")[0].appendChild(loadingIcon);
+}
 
-  document.getElementsByClassName("cards")[0].innerHTML = '';
-fetch(searchUrl)
-.then(response => response.json())
-.then(data => {
+
+async function getTrending(type) {
+  let cards = [];
+  const apiKey = '0e9ade0abf158102c2f0931986405190';
+
+  initItemsContainer();
+  addLoadingIcon();
+
+  for(let pageCount = 1; cards.length < 16 && pageCount < 10; pageCount++){
+    const searchUrl = `https://api.themoviedb.org/3/${type}/popular?api_key=${apiKey}&page=${pageCount}`;
+    const newCards = await getPage(type, searchUrl);
+    cards = cards.concat(newCards);
+  }
+
+  initItemsContainer();
+
   let row = document.createElement("div");
   row.className = "row";
   document.getElementsByClassName("cards")[0].appendChild(row);
-  const results = [...data.results].slice(0, 16);
-  results.forEach(result => {
-  const movieId = result.id;
-  const movieDetailsUrl = `https://api.themoviedb.org/3/`+type+`/${movieId}?api_key=${apiKey}`;
 
-  fetch(movieDetailsUrl)
-    .then(response => response.json())
-    .then(async movieData => {
-        if(movieData?.poster_path && movieData && (movieData?.title || movieData?.name) 
-        //&& (type === 'tv' ? await checkForMovieResults('series', movieData?.name)  : await checkForMovieResults(type, movieData?.title))
-        ){
-          let card = document.createElement("div");
-        card.className = "card";
-        card.onclick = () => {
-          window.location.href = buildUrl('./player.html', {type: type, tmdb: movieId, imdb: movieData.imdb_id});
-        }
-        let cardData = document.createElement("div");
-        let poster = document.createElement("img");
-        poster.src = "https://image.tmdb.org/t/p/original/" + movieData.poster_path;
-        poster.className = "poster";
-        card.appendChild(poster);
-        cardData.className = "data"
-        cardData.innerText = (type === 'tv' ? movieData.name : movieData.title) + "\nRating: " + movieData.vote_average.toFixed(1) + "/10";
-        card.appendChild(cardData);
-        const rows = document.getElementsByClassName("row");
-        rows[rows.length -1].appendChild(card);
-        if(rows[rows.length -1].length == 4){
-          let row = document.createElement("div");
-          row.className = "row";
-          document.getElementsByClassName("cards")[0].appendChild(row);
-        }
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching movie details:', error);
-    });
-    
+  for(let i = 0; i<Math.min(16, cards.length); i++){
+    const rows = document.getElementsByClassName("row");
+
+    if(rows[rows.length -1].getElementsByClassName("card").length == 4){
+      let row = document.createElement("div");
+      row.className = "row";
+      document.getElementsByClassName("cards")[0].appendChild(row);
+    }
+
+    rows[rows.length - 1].appendChild(cards[i]);
   }
-);
-})
-.catch(error => {
-  console.error('Error searching for movie:', error);
-});
 }
 
+async function getPage(type, searchUrl) {
+  try {
+    const apiKey = '0e9ade0abf158102c2f0931986405190';
+    const items = [];
+    console.log(searchUrl);
+    const response = await fetch(searchUrl);
+    const data = await response.json();
+    const results = [...data.results];
+
+    const fetchPromises = results.map(async (result) => {
+      try {
+      const movieId = result.id;
+      const movieDetailsUrl = `https://api.themoviedb.org/3/${type}/${movieId}?api_key=${apiKey}`;
+      const response = await fetch(movieDetailsUrl);
+      const movieData = await response.json();
+
+      if (
+        movieData?.poster_path &&
+        (movieData?.title || movieData?.name) &&
+        (type === 'tv'
+          ? await checkForMovieResults('series', movieData?.name, movieId)
+          : await checkForMovieResults(type, movieData?.title, movieId))
+      ) {
+        let card = createCard(type, movieId, movieData);
+        items.push(card);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+    });
+
+    await Promise.all(fetchPromises);
+
+    return items;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+
+function createNotFound(){
+  let notFound = document.createElement("div");
+  let notFoundText = document.createElement("p");
+  let notFoundIcon = document.createElement("img");
+  notFoundIcon.src = "https://www.eagleworksolutions.co.uk/images/no-search-found.png";
+  notFoundText.innerText = "Sorry, no results found for this search..."
+  notFound.className = "not-found";
+
+  notFound.appendChild(notFoundIcon);
+  notFound.appendChild(notFoundText);
+  return notFound;
+}
+
+function createCard(type, movieId, movieData){
+  let card = document.createElement("div");
+  card.className = "card";
+  card.onclick = () => {
+    window.location.href = buildUrl('./player.html', {type: type, tmdb: movieId, imdb: movieData.imdb_id});
+  }
+  let cardData = document.createElement("div");
+  let poster = document.createElement("img");
+  poster.src = `https://image.tmdb.org/t/p/original/${movieData.poster_path}`;
+  poster.className = "poster";
+  card.appendChild(poster);
+  card.movieId = movieId;
+  cardData.className = "data"
+  cardData.innerText = (type === 'tv' ? movieData.name : movieData.title) + "\nRating: " + movieData.vote_average.toFixed(1) + "/10";
+  card.appendChild(cardData);
+  return card;
+}
 
 function buildUrl(baseUrl, queryParams){
 
@@ -181,15 +189,6 @@ return finalUrl;
 }
 
 function loadMoviePage(){
-  const d = new Date
-  createSystemMessage(
-    [(d.getMonth()+1).padLeft(),
-      d.getDate().padLeft()].join('/') +' ' +
-     [d.getHours().padLeft(),
-      d.getMinutes().padLeft()].join(':'),
-      "Hello. this is a text message. hope you like it here so far!!",
-      "test message for system messages"
-  );
 const searchParams = new URLSearchParams(window.location.search)
 const movieId = searchParams.get('tmdb');
 const type = searchParams.get('type');
@@ -203,62 +202,88 @@ const movieDetailsUrl = `https://api.themoviedb.org/3/`+type+`/${movieId}?api_ke
         params = "type=series&" + params + "&season=1&episode=1";
         buildSeriesSelector(movieData, "selection")
       }
-        document.getElementsByTagName('iframe')[0].src = "https://databasegdriveplayer.xyz/player.php?" + params;
+      document.getElementsByTagName('iframe')[0].src = "https://databasegdriveplayer.xyz/player.php?" + params;
         document.getElementsByClassName('media-type')[0].innerText = type === 'tv' ? 'Series' : 'Movies';
         document.getElementsByClassName('back-img')[0].src="https://image.tmdb.org/t/p/original"+movieData.backdrop_path;
         document.getElementsByClassName('overlay-text')[0].innerText = movieData.title ? movieData.title : movieData.name;
         document.getElementsByClassName('movie-data')[0].innerText = movieData.overview;
+        document.getElementsByTagName('title')[0].innerText += movieData.title ? movieData.title : movieData.name;
         document.getElementsByClassName('rating-data')[0].innerText = movieData.vote_average.toFixed(1) + "/10";
         document.getElementsByClassName('vote-count')[0].innerText = `(${movieData.vote_count} voters)`;
         document.getElementsByClassName('info-header')[0].innerText = 
-        `${movieData.release_date.split('-')[0]} • ${movieData.production_countries[0].name} • ${movieData.spoken_languages[0].name}  `;
+        `${(movieData.release_date ? movieData.release_date : movieData.first_air_date).split('-')[0]} • ${(movieData.origin_country ? movieData.origin_country[0] : movieData.production_countries[0].name)} • ${movieData.spoken_languages[0].name}  `;
         })
         .catch(error => {
           console.error('Error fetching movie details:', error);
         });
       }
 
-      function buildSeriesSelector(seriesData, targetElementId) {
-        try {
-          // Get the total number of seasons and episodes from the provided seriesData
-          const numSeasons = seriesData.number_of_seasons;
-          const numEpisodes = seriesData.number_of_episodes;
-      
-          // Get the target element where the selector will be added
-          const targetElement = document.getElementById(targetElementId);
-      
-          // Create a div element for the series selector
-          const seriesSelectorDiv = document.createElement('div');
-          seriesSelectorDiv.className = 'series-selector';
-      
-          // Create a select element for seasons
-          const seasonSelect = document.createElement('select');
-          seasonSelect.classname = 'selector';
-          seasonSelect.id = 'season-select';
-      
-          // Populate season options
-          for (let seasonNumber = 1; seasonNumber <= numSeasons; seasonNumber++) {
-            const option = document.createElement('option');
-            option.value = seasonNumber;
-            option.textContent = `Season ${seasonNumber}`;
-            seasonSelect.appendChild(option);
-          }
-      
-          // Create a select element for episodes
-          const episodeSelect = document.createElement('select');
-          episodeSelect.classname = 'selector';
-          episodeSelect.id = 'episode-select';
+let currentIndex = 0;
 
-          seasonSelect.addEventListener('change', updateIframe);
-          episodeSelect.addEventListener('change', updateIframe);
-      
-              // Initially populate episode options for the first season
-    for (let episodeNumber = 1; episodeNumber <= seriesData.seasons[0].episode_count; episodeNumber++) {
-      const option = document.createElement('option');
-      option.value = episodeNumber;
-      option.textContent = `Episode ${episodeNumber}`;
-      episodeSelect.appendChild(option);
-    }
+function showNextMessage() {
+  const messageItems = document.querySelectorAll('.message-item');
+  const navButtons = document.querySelectorAll('.system-messages-nav-button');
+  messageItems[currentIndex].classList.remove('slide-in', 'slide-out');
+  navButtons[currentIndex].classList.remove('active');
+  currentIndex = (currentIndex + 1) % messageItems.length;
+  messageItems[currentIndex].classList.add('slide-in');
+  navButtons[currentIndex].classList.add('active');
+  setTimeout(showNextMessage, 60000);
+}
+
+
+
+// Function to show a specific message when a nav button is clicked
+function showMessage(index) {
+  const messageItems = document.querySelectorAll('.message-item');
+  const navButtons = document.querySelectorAll('.system-messages-nav-button');
+  messageItems[currentIndex].classList.remove('slide-in', 'slide-out');
+  navButtons[currentIndex].classList.remove('active');
+  currentIndex = index;
+  messageItems[currentIndex].classList.add('slide-in');
+  navButtons[currentIndex].classList.add('active');
+}
+
+function buildSeriesSelector(seriesData, targetElementId) {
+    try {
+      // Get the total number of seasons and episodes from the provided seriesData
+      const numSeasons = seriesData.number_of_seasons;
+      const numEpisodes = seriesData.number_of_episodes;
+  
+      // Get the target element where the selector will be added
+      const targetElement = document.getElementById(targetElementId);
+  
+      // Create a div element for the series selector
+      const seriesSelectorDiv = document.createElement('div');
+      seriesSelectorDiv.className = 'series-selector';
+  
+      // Create a select element for seasons
+      const seasonSelect = document.createElement('select');
+      seasonSelect.classname = 'selector';
+      seasonSelect.id = 'season-select';
+  
+      // Populate season options
+      for (let seasonNumber = 1; seasonNumber <= numSeasons; seasonNumber++) {
+        const option = document.createElement('option');
+        option.value = seasonNumber;
+        option.textContent = `Season ${seasonNumber}`;
+        seasonSelect.appendChild(option);
+      }
+  
+      // Create a select element for episodes
+      const episodeSelect = document.createElement('select');
+      episodeSelect.classname = 'selector';
+      episodeSelect.id = 'episode-select'
+      seasonSelect.addEventListener('change', updateIframe);
+      episodeSelect.addEventListener('change', updateIframe);
+  
+          // Initially populate episode options for the first season
+for (let episodeNumber = 1; episodeNumber <= seriesData.seasons[0].episode_count; episodeNumber++) {
+  const option = document.createElement('option');
+  option.value = episodeNumber;
+  option.textContent = `Episode ${episodeNumber}`;
+  episodeSelect.appendChild(option);
+}
 
     // Append season and episode selectors to the div
     seriesSelectorDiv.appendChild(seasonSelect);
@@ -297,13 +322,17 @@ function updateIframe(){
   `${new URLSearchParams(window.location.search).get('tmdb')}&season=${selectedSeason}&episode=${selectedEpisode}`;
 }
 
+function openContentManually(){
+  window.open(document.getElementsByTagName('iframe')[0].src, '_blank');
+}
+
 function switchToImdb(){
   const imdb_id = new URLSearchParams(window.location.search).get('imdb');
   if(imdb_id !== "undefined"){
-      const selectedSeason = document.getElementById('season-select') ? `season=${document.getElementById('season-select').value}` : '';
-      const selectedEpisode = document.getElementById('episode-select') ? `episode=${document.getElementById('episode-select').value}` : '';
+      const selectedSeason = document.getElementById('season-select') ? `&season=${document.getElementById('season-select').value}` : '';
+      const selectedEpisode = document.getElementById('episode-select') ? `&episode=${document.getElementById('episode-select').value}` : '';
       let type = new URLSearchParams(window.location.search).get('type');
       type = type === 'tv' ? 'type=series&' : '';
-      document.getElementsByTagName('iframe')[0].src = `https://databasegdriveplayer.xyz/player.php?${type}imdb=${imdb_id}${selectedSeason}&${selectedEpisode}`;
+      document.getElementsByTagName('iframe')[0].src = `https://databasegdriveplayer.xyz/player.php?${type}imdb=${imdb_id}${selectedSeason}${selectedEpisode}&sandbox=true`;
     }
   }

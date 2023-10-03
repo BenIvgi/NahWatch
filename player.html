@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2809/2809590.png">
-    <title>NahWatch</title>
+    <title>NahWatch - </title>
 </head>
 <body>
     <header class="navbar">
@@ -48,22 +48,32 @@
                 <iframe class="player" allowfullscreen sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"></iframe>
             </div>
             <div class="player-buttons">
-                <button class="switch-type" onclick="switchToImdb();">Doesn't Work #1? Try Pressing Me!</button>
-                <button class="switch-type" onclick="document.getElementById('requestModal').style.display = 'block';">Doesn't Work #2? Submit a Request!</button>
-                <button class="switch-type" >Doesn't Work #3? Idk man...</button>
+                <button class="switch-type" onclick="openContentManually();">Doesn't Work #1? Open Manually!</button>
+                <button class="switch-type" onclick="switchToImdb();">Doesn't Work #2? Try Pressing Me!</button>
+                <button class="switch-type" onclick="document.getElementById('requestModal').style.display = 'block';">Doesn't Work #3? Submit a Request!</button>
             </div>
             </div>
             <script src="script.js"></script>
             <script>window.onload = loadMoviePage;</script>   
             <div class="item-list">
-                <div class="system-messages">
-                    <img src="https://cdn-icons-png.flaticon.com/512/62/62017.png" class="icon" alt="">
-                    <h1>System Messages</h1>
-                    <div class="message-content">
-                        <p>Hello, this website is pretty cool, right??</p>
-                        <p>You should know that some content might be<br>[-]Unavailable<br>[-]Low Quality<br>[-]General BS...</p>
-                    </div>
-                </div>
+                <button class="list-button">
+                    <img class= "icon" src="https://cdn-icons-png.flaticon.com/512/2790/2790087.png" alt="">Genres
+                </button>
+                <button class="list-button">
+                    <img class="icon" src="https://procurementforhousing.co.uk/wp-content/uploads/2020/10/flaming-flame-icons-download-free-png-and-vector-icons-766499.png" alt="">Trending Now
+                </button>
+                <button class="list-button">
+                    <img class ="icon" src="https://cdn-icons-png.flaticon.com/512/184/184977.png" alt="">Top Rated
+                </button>
+                <button class="list-button">
+                    <img class= "icon" src="https://cdn-icons-png.flaticon.com/512/6996/6996000.png" alt="">About
+                </button>
+                <button class="list-button">
+                    <img class="icon" src="https://cdn-icons-png.flaticon.com/512/912/912267.png" alt="">Staff
+                </button>
+                <button class="list-button">
+                    <img class ="icon" src="https://cdn-icons-png.flaticon.com/512/7269/7269995.png" alt="">Contact Us
+                </button>
             </div>
         <footer class="bottom-bar">
             <p>© 2023 NAHWATCH. All rights reserved to original creators.<br>"This nonprofit streaming website was meticulously crafted by Ben David Ivgi to provide you with an exceptional entertainment experience. Explore our extensive collection of movies and series, and embark on a cinematic journey like never before."(ChatGPT, 2023)</p>

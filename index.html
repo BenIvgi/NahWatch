@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2809/2809590.png">
-    <title>NahWatch - Series</title>
+    <title>NahWatch</title>
 </head>
 <body>
+    <script src="script.js"></script>
     <header class="navbar">
         <div class="navitem">
-            <a href="./index.html">
+            <a href="#">
                 <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2809/2809590.png" alt="NahWatch">
             </a>
         </div>
@@ -22,11 +23,7 @@
         </div>
         <div class="title-container">
             <h1 class="navtitle">NahWatch</h1>
-            <h1 class="media-type">series</h1>
-        </div>
-        <div class="search-conatiner">
-            <button id="search-button" class="search-button" onclick="searchMedia('tv')">Search</button>
-            <input class="search-bar" id="search" type="text" placeholder="Search...">
+            <h1 class="media-type">watch now!</h1>
         </div> 
         <div>
             
@@ -54,19 +51,36 @@
             </button>
         </div>
         <div class="cards">
+            <div class="system-messages">
+                <div class="system-message-title-container">
+                    <h1>System Messages</h1>
+                </div>
+                <div class="system-message-data-container">
+                    <div class="message-item">Message 1</div>
+                    <div class="message-item">Message 2</div>
+                    <div class="message-item">Message 3</div>
+                    <div class="message-item">Message 4</div>
+                    <div class="message-item">Message 5</div>
+                </div>
+                <div class="system-message-navbar">
+                    <button class="system-messages-nav-button" onclick="showMessage(0)">1</button>
+                    <button class="system-messages-nav-button" onclick="showMessage(1)">2</button>
+                    <button class="system-messages-nav-button" onclick="showMessage(2)">3</button>
+                    <button class="system-messages-nav-button" onclick="showMessage(3)">4</button>
+                    <button class="system-messages-nav-button" onclick="showMessage(4)">5</button>
+                </div>
+            </div>
+            <script>
+                const messageItems = document.querySelectorAll('.message-item');
+                const navButtons = document.querySelectorAll('.system-messages-nav-button');
+                messageItems[currentIndex].classList.add('slide-in');
+                navButtons[currentIndex].classList.add('active');
+                setTimeout(showNextMessage, 60000);
+                </script>
         </div>
         <footer class="bottom-bar">
             <p>© 2023 NAHWATCH. All rights reserved to original creators.<br>"This nonprofit streaming website was meticulously crafted by Ben David Ivgi to provide you with an exceptional entertainment experience. Explore our extensive collection of movies and series, and embark on a cinematic journey like never before."(ChatGPT, 2023)</p>
         </footer>
     </div>
-    <script src="script.js"></script>
-    <script>
-    window.onload = () => {getTrending("tv")};
-    document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter' || event.keyCode === 13) {
-        searchMedia('tv')
-    }
-});
-    </script> 
 </body>
 </html>

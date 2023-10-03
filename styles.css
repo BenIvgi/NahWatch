@@ -11,13 +11,13 @@
 
 .rating {
     content: "";
-    display: table;
+    display: flex;
     clear: both;
-    width: 27%;
-    height: 1%;
+    width: 35%;
+    height: 3%;
     border-radius: 5px;
     background-color: #9f5af8;
-    margin: 5px;
+    margin: 10px;
 }
 
 .rating .icon {
@@ -107,6 +107,18 @@
     cursor: pointer;
 }
 
+.loading-icon{
+    position: absolute;
+    left: 23%;
+}
+
+.not-found{
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    color:#c3b1e0;
+}
+
 .modal form {
     text-align: center;
 }
@@ -123,7 +135,8 @@
 
 .system-messages {
     background-color: #575757;
-    border-radius: 5px;
+    border-radius: 10px;
+    text-align: center;
     margin: 3%;
     width: 94%;
     height: 25%;
@@ -177,10 +190,8 @@
     font-family: 'Arial', sans-serif;
     color:#9f5af8;
     text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
-    font-size: 25px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-left: 30px;
+    font-size: 29px;
+    margin: 5px;
 }
 
 .message-content h2, h3{
@@ -191,12 +202,61 @@
     margin: 10px;
 }
 
+.message-item {
+    position: absolute;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.5s;
+    margin: 5px
+}
+
+.slide-in {
+    opacity: 1;
+}
+
+.slide-out {
+    opacity: 0;
+}
+
+.system-message-data-container {
+    position: relative;
+    border-radius: 10px;
+    width: calc(100%-10px);;
+    height: 78%;
+    margin: 10px;
+    background-color: #c3b1e0;
+    overflow: hidden;
+}
+
+.system-message-navbar {
+    background-color: #282828;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.system-messages-nav-button {
+    border-radius: 50%;
+    margin: 5px;
+    border: none;
+    color: #9f5af8;
+    background-color: #9f5af8;
+}
+
+.system-messages-nav-button.active {
+    color:#4907b4;
+    background-color: #4907b4;
+}
+
+
 .media-type{
     font-family: 'Arial', sans-serif;
     color:#9f5af8;
     font-size: 35px;
     text-align: center; 
-    text-transform: uppercase;
     letter-spacing: 2px;
     position: relative;
     float: right;
@@ -212,7 +272,7 @@
 
 .overlay-text {
     position: absolute; /* Position the text relative to the container */
-    top: 85%; /* Adjust vertical position as needed */
+    top: 75%; /* Adjust vertical position as needed */
     left: 0%; /* Adjust horizontal position as needed */
     transform: translate(0%, -20%); /* Center the text within the container */
     color: white; /* Text color */
@@ -244,7 +304,7 @@
 .items {
     display: table;
     width: 97.7%;
-    height: 245%;
+    height: 270%;
     border-color: #762bf0;
     background-color:#373737;
     position: absolute;
@@ -274,7 +334,7 @@
 
 .row {
     height: 25%;
-    margin: 15px;
+    width: 100%;
     
 }
 
@@ -318,14 +378,10 @@ select {
     float: left;
     width: 20%;
     height: 80%;
-    max-width: 20%;
-    max-height: 80%;
     background-color: #4907b4;
     border-radius: 10px;
-    margin: 20px;
+    margin: 4% 2.5%;
     position: relative;
-    justify-content: center;
-    align-items: center;
     color: #ffffff;
     transition: background-color 1.3s ease, transform 0.7s ease;
 }
@@ -354,14 +410,14 @@ select {
 
 .poster {
     width: 80%; /* 80% of parent's width */
-  height: 70%; /* 70% of parent's height */
-  max-width: 100%; /* Ensure the image doesn't exceed the parent's width */
-  max-height: 100%; /* Ensure the image doesn't exceed the parent's height */
-  position: absolute; /* Position the image within the parent */
-  top: 60%; /* Center vertically by moving it 50% down from the top */
-  left: 50%; /* Center horizontally by moving it 50% from the left */
-  transform: translate(-50%, -50%); /* Center the image precisely */
-  border-radius: 5px;
+    height: 70%; /* 70% of parent's height */
+    max-width: 100%; /* Ensure the image doesn't exceed the parent's width */
+    max-height: 100%; /* Ensure the image doesn't exceed the parent's height */
+    position: absolute; /* Position the image within the parent */
+    top: 60%; /* Center vertically by moving it 50% down from the top */
+    left: 50%; /* Center horizontally by moving it 50% from the left */
+    transform: translate(-50%, -50%); /* Center the image precisely */
+    border-radius: 5px;
 }
 
 .navitem {
@@ -409,11 +465,15 @@ select {
     color:#4907b4;
 }
 
+
+
 .player-container{
     width: 98%;
-    height: 33%;
+    height: 35%;
     margin: 10px;
     background: url('https://blog.stackfindover.com/wp-content/uploads/2021/09/Rocket-Loading-Screen.gif');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .switch-type {
@@ -444,6 +504,35 @@ select {
     cursor: wait;
 }
 
+.list-button {
+    color:#eeeeee;
+    align-items: center;
+    justify-content: left;
+    display:flex;
+    cursor: pointer;
+    background-color: #4907b4;
+    width: 96%;
+    margin: 2%;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #282828;
+    border-width: 0px;
+    font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: 0.7s ease;
+}
+
+.list-button:hover {
+transform: scale(1.01);
+font-size: 21px;
+background-color: #eeeeee;
+color:#4907b4;
+}
+
+.list-button:active {
+transform: scale(0.95);
+cursor: wait;
+}
 
 .navbutton {
     color:#eeeeee;
@@ -475,6 +564,7 @@ select {
     height: 40px;
     width: auto;
     float: left;
+    margin: 5px;
 }
 
 .navtitle {
