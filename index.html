@@ -10,24 +10,17 @@
 <body>
     <script src="script.js"></script>
     <header class="navbar">
-        <div class="navitem">
-            <a href="#">
-                <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2809/2809590.png" alt="NahWatch">
-            </a>
-        </div>
-        <div class="navitem">
-            <button class="navbutton" onclick="window.location.href = './series.html'">Series</button>
-        </div>
-        <div class="navitem">
-            <button class="navbutton" onclick="window.location.href='./movie.html'">Movies</button>
-        </div>
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2809/2809590.png" alt="NahWatch">
+        <button class="navbutton" onclick="window.location.href = './series.html'">Series</button>
+        <button class="navbutton" onclick="window.location.href='./movie.html'">Movies</button>
         <div class="title-container">
             <h1 class="navtitle">NahWatch</h1>
-            <h1 class="media-type">watch now!</h1>
-        </div> 
-        <div>
-            
+            <h1 class="media-type">series</h1>
         </div>
+        <div class="search-conatiner">
+            <button id="search-button" class="search-button" onclick="searchMedia('tv')">Search</button>
+            <input class="search-bar" id="search" type="text" placeholder="Search...">
+        </div> 
     </header>
     <div class="items">
         <div class="item-list">
