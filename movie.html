@@ -9,7 +9,8 @@
 </head>
 <body>
     <header class="navbar">
-        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2809/2809590.png" alt="NahWatch">
+        
+        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/2809/2809590.png" onclick="window.location.href = './index.html';" alt="NahWatch">
         <button class="navbutton" onclick="window.location.href = './series.html'">Series</button>
         <button class="navbutton" onclick="window.location.href='./movie.html'">Movies</button>
         <div class="title-container">
@@ -17,7 +18,7 @@
             <h1 class="media-type">movies</h1>
         </div>
         <div class="search-conatiner">
-            <button id="search-button" class="search-button" onclick="searchMedia('tv')">Search</button>
+            <button id="search-button" class="search-button" onclick="searchMedia('movie')">Search</button>
             <input class="search-bar" id="search" type="text" placeholder="Search...">
         </div> 
     </header>
@@ -44,10 +45,10 @@
         </div>
         <div class="cards">
         </div>
-        <footer class="bottom-bar">
-            <p>© 2023 NAHWATCH. All rights reserved to original creators.<br>"This nonprofit streaming website was meticulously crafted by Ben David Ivgi to provide you with an exceptional entertainment experience. Explore our extensive collection of movies and series, and embark on a cinematic journey like never before."(ChatGPT, 2023)</p>
-        </footer>
     </div>
+    <footer class="bottom-bar">
+        <p>© 2023 NAHWATCH. All rights reserved to original creators.<br>"This nonprofit streaming website was meticulously crafted by Ben David Ivgi to provide you with an exceptional entertainment experience. Explore our extensive collection of movies and series, and embark on a cinematic journey like never before."(ChatGPT, 2023)</p>
+    </footer>
     <script src="script.js"></script>
     <script>
         window.onload = () => {getTrending("movie")};
