@@ -3,11 +3,11 @@
     display: flex;
     overflow: hidden;
     clear: both;
-    width: calc(100% - 20px);
-    min-height: calc(10% - 20px);
+    width: calc(100% - 1.25rem);
+    min-height: calc(10% - 1.25rem);
     border-color: #762bf0;
     background-color:#373737;
-    margin: 10px;
+    margin: 0.6rem;
 }
 
 .rating {
@@ -16,47 +16,47 @@
     clear: both;
     width: 35%;
     height: 3%;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     background-color: #9f5af8;
-    margin: 10px;
+    margin: 0.6rem;
 }
 
 .rating .icon {
-    margin: 5px;
+    margin: 0.3rem;
 }
 
 .vote-count {
     float: right;
     color:#eeeeee;
-    font-size: large;
+    font-size: 1rem;
     text-align:right;
-    padding-right: 5px;
-    margin-top: 20px;
+    padding-right: 0.3rem;
+    margin-top: 1.2rem;
 }
 
 .rating-data{
     float: right;
     color:#eeeeee;
-    font-size: xx-large;
-    margin: 8px 5px 5px 5px;
-    padding-right: 5px;
+    font-size: 1rem;
+    margin: 0.5rem 0.3rem 0.3rem 0.3rem;
+    padding-right: 0.3rem;
 }
 
 .description {
-    font-size: larger;
+    font-size: 1rem;
     color: whitesmoke;
-    margin: 10px;
+    margin: 0.6rem;
     background-color: #121212;
-    padding: 5px;
-    border-radius: 3px;
+    padding: 0.3rem;
+    border-radius: 0.2rem;
     min-height: 10%;
 
 }
 
 .info-header{
     background-color: #575757;
-    border-radius: 3px;
-    margin: 5px;
+    border-radius: 0.2rem;
+    margin: 0.3rem;
     color: whitesmoke;
     text-align: center;
 }
@@ -91,31 +91,33 @@
     position: absolute;
     color:#c3b1e0;
     margin: 15% auto;
-    padding: 20px;
+    padding: 1.25rem;
     width: 50%;
     height: 80%;
-    border-radius: 5px;
+    border-radius: 0.3rem;
     top: 5%;
     left:20%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .modal .close {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 24px;
+    top: 0.6rem;
+    right: 1.25rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 
 .loading-icon{
     display: inline-block;
+    width: 50%;
+    height: auto;
 }
 
 .not-found{
     width: 100%;
     text-align: center;
-    font-size: xx-large;
+    font-size: 1rem;
     color:#c3b1e0;
 }
 
@@ -135,22 +137,22 @@
 
 .system-messages {
     background-color: #575757;
-    border-radius: 10px;
+    border-radius: 0.6rem;
     text-align: center;
-    margin: 10px;
-    width: calc(100% - 20px);
-    height: calc(60% - 20px);
+    margin: 0.6rem;
+    width: calc(100% - 1.2rem);
+    height: calc(60% - 1.2rem);
 }
 
 .player-buttons {
     content: "";
     display: table;
     clear: both;
-    width: calc(100% - 20px);
-    height: calc(5% - 20px);
+    width: calc(100% - 1.2rem);
+    height: calc(5% - 1.2rem);
     align-items: center;
-    border-radius: 10px;
-    margin: 10px;
+    border-radius: 0.6rem;
+    margin: 0.6rem;
     background-color:#121212;
 }
 
@@ -160,20 +162,20 @@
 }
 
 .series-selector {
-    height: calc(100% - 20px);
-    width: calc(100% - 20px);
-    margin: 10px;
+    height: calc(100% - 1.2rem);
+    width: calc(100% - 1.2rem);
+    margin: 0.6rem;
     background-color:#575757;
-    border-radius: 10px;
+    border-radius: 0.6rem;
 }
 
 .system-messages h1{
     font-family: 'Arial', sans-serif;
     color:#9f5af8;
-    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
-    width: calc(100% - 20px);
-    height: calc(10% - 20px);
-    margin: 10px;
+    text-shadow: -0.125rem -0.125rem 0 #000, 0.125rem -0.125rem 0 #000, -0.125rem 0.125rem 0 #000, 0.125rem 0.125rem 0 #000;
+    width: calc(100% - 1.2rem);
+    height: calc(10% - 1.2rem);
+    margin: 0.6rem;
 }
 
 .message-item {
@@ -196,28 +198,28 @@
 
 .system-message-data-container {
     position: relative;
-    border-radius: 10px;
-    min-width: calc(100%-20px);
-    height: calc(75% - 20px);
-    margin: 10px;
+    border-radius: 0.6rem;
+    min-width: calc(100%-1.2rem);
+    height: calc(75% - 1.2rem);
+    margin: 0.6rem;
     background-color: #c3b1e0;
     overflow: hidden;
 }
 
 .system-message-navbar {
-    width: calc(100% -20px);
-    height: calc(15% - 20px);
+    width: calc(100% -1.2rem);
+    height: calc(15% - 1.2rem);
     background-color: #282828;
-    border-radius: 10px;
+    border-radius: 0.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 0.6rem;
 }
 
 .system-messages-nav-button {
     border-radius: 50%;
-    margin: 5px;
+    margin: 0.3rem;
     border: none;
     color: #9f5af8;
     background-color: #9f5af8;
@@ -232,8 +234,9 @@
 .media-type{
     font-family: 'Arial', sans-serif;
     color:#9f5af8;
-    letter-spacing: 2px;
-    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    letter-spacing: 0.125rem;
+    font-size: 2rem;
+    text-shadow: -0.125rem -0.125rem 0 #000, 0.125rem -0.125rem 0 #000, -0.125rem 0.125rem 0 #000, 0.125rem 0.125rem 0 #000;
 }
 
 .back-img {
@@ -249,55 +252,55 @@
     left: 0%; /* Adjust horizontal position as needed */
     transform: translate(0%, -20%); /* Center the text within the container */
     color: white; /* Text color */
-    padding: 10px; /* Add padding to the text for better readability */
-    font-size: 50px; /* Adjust the font size as needed */
+    padding: 0.6rem; /* Add padding to the text for better readability */
+    font-size: 1rem;
     font-weight: bold; /* Adjust font weight as needed */
   }
 
   .bottom-bar p{
-    margin: 10px;
-    font-size: x-large;
+    margin: 0.6rem;
+    font-size: 1rem;
   }
 
 .bottom-bar {
     content: "";
     display: table;
     clear: both;
-    width: calc(100% - 20px);
-    height: calc(10% - 20px);
+    width: calc(100% - 1.2rem);
+    height: calc(10% - 1.2rem);
     background-color:#373737;
     color: whitesmoke;
-    margin: 10px;
+    margin: 0.6rem;
 }
 
 .items {
     content: "";
     display: table;
     clear: both;
-    width: calc(100% - 20px);
+    width: calc(100% - 1.2rem);
     height: 100%;
     border-color: #762bf0;
     background-color:#373737;
-    margin: 10px;
+    margin: 0.6rem;
     
 }
 
 .item-list {
     float: right;
     background-color: #282828;
-    margin: 10px;
-    width: calc(25% - 20px);
-    min-height: calc(100% - 20px);
-    border-radius: 5px;
+    margin: 0.6rem;
+    width: calc(25% - 1.2rem);
+    min-height: calc(100% - 1.2rem);
+    border-radius: 0.3rem;
 }
 
 .cards {
     float: left;
     background-color: #282828;
-    margin: 10px;
-    width: calc(75% - 20px);
-    height: calc(100% - 20px);
-    border-radius: 5px;
+    margin: 0.6rem;
+    width: calc(75% - 1.2rem);
+    height: calc(100% - 1.2rem);
+    border-radius: 0.3rem;
     display: block;
     text-align: center;
 }
@@ -309,13 +312,13 @@
 }
 
 select {
-    width: calc(50% - 20px); 
-    height: calc(100% - 20px);
-    margin: 10px;
-    font-size: 16px;
+    width: calc(50% - 1.2rem); 
+    height: calc(100% - 1.2rem);
+    margin: 0.6rem;
+    font-size: 1rem;
     overflow: hidden;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 0.06rem solid #ccc;
+    border-radius: 0.3rem;
     background-color:#762bf0;
     cursor: pointer;
   }
@@ -325,9 +328,9 @@ select {
     content: '\25BC'; /* Unicode arrow-down character */
     position: absolute;
     top: 50%;
-    right: 10px;
+    right: 0.6rem;
     transform: translateY(-50%);
-    font-size: 16px;
+    font-size: 1rem;
     pointer-events: none; /* Ensure the arrow doesn't interfere with clicks */
   }
   
@@ -335,7 +338,7 @@ select {
   select option {
     background-color: #fff;
     color: #333;
-    font-size: 16px;
+    font-size: 1rem;
   }
   
   /* Style the select when it's focused */
@@ -345,11 +348,11 @@ select {
   }
   .card {
     float: left;
-    width: calc(25% - 20px);
+    width: calc(25% - 1.2rem);
     aspect-ratio: 2/3;
     background-color: #4907b4;
-    border-radius: 10px;
-    margin: 10px;
+    border-radius: 0.6rem;
+    margin: 0.6rem;
     position: relative;
     color: #ffffff;
     transition: background-color 1.3s ease, transform 0.7s ease;
@@ -369,9 +372,9 @@ select {
 
 
 .data {
-    margin: 5px;
+    margin: 0.3rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: large;
+    font-size: 1rem;
     max-height: 20%;
     max-width: 80%;
     overflow: hidden;
@@ -386,36 +389,36 @@ select {
     top: 60%; /* Center vertically by moving it 50% down from the top */
     left: 50%; /* Center horizontally by moving it 50% from the left */
     transform: translate(-50%, -50%); /* Center the image precisely */
-    border-radius: 5px;
+    border-radius: 0.3rem;
 }
 
 .navitem {
     float: left;
-    margin: 10px;
+    margin: 0.6rem;
 }
 
 .search-conatiner {
     float: right;
     background-color: #282828;
-    margin: 10px 10px 10px 10px;
-    width: calc(27% - 20px);
-    height: calc(100% - 20px);
-    border-radius: 5px;
-    margin: 10px;
+    margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+    width: calc(27% - 1.2rem);
+    height: calc(100% - 1.2rem);
+    border-radius: 0.3rem;
+    margin: 0.6rem;
     display: flex;
 }
 
 .search-bar {
-    padding: 10px;
+    padding: 0.6rem;
     color:#282828;
     background-color: #c3b1e0;
-    margin: 10px 10px 10px 5px;
-    width: calc(76% - 10px);
+    margin: 0.6rem 0.6rem 0.6rem 0.3rem;
+    width: calc(76% - 0.6rem);
     min-height: calc(100%);
-    border-radius: 10px;
+    border-radius: 0.6rem;
     border-color: #282828;
-    border-width: 0px;
-    font-size: 16px;
+    border-width: 0rem;
+    font-size: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -424,13 +427,13 @@ select {
     cursor: pointer;
     overflow: hidden;
     background-color: #4907b4;
-    width: calc(33% - 10px);
-    min-height: calc(100% - 20px);
-    margin: 10px 5px 10px 10px;
-    border-radius: 10px;
+    width: calc(33% - 0.6rem);
+    min-height: calc(100% - 1.2rem);
+    margin: 0.6rem 0.3rem 0.6rem 0.6rem;
+    border-radius: 0.6rem;
     border-color: #282828;
-    border-width: 0px;
-    font-size: 16px;
+    border-width: 0rem;
+    font-size: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     transition: transform 0.7s ease, color 0.7s ease, background-color 0.7s ease;
 }
@@ -445,9 +448,9 @@ select {
 
 
 .player-container{
-    width: 98%;
-    height: 35%;
-    margin: 10px;
+    width: calc(100% - 1.2rem);
+    height: fit-content;
+    margin: 0.6rem;
     background: url('https://blog.stackfindover.com/wp-content/uploads/2021/09/Rocket-Loading-Screen.gif');
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -456,13 +459,13 @@ select {
 .switch-type {
     color:#eeeeee;
     background-color: #4907b4;
-    width: 150px;
-    height: 45px;
-    margin: 10px;
-    border-radius: 10px;
+    width: calc(33% - 1.2rem);
+    height: calc(100% - 1.2rem);
+    margin: 0.6rem;
+    border-radius: 0.6rem;
     border-color: #282828;
-    border-width: 0px;
-    font-size: 16px;
+    border-width: 0rem;
+    font-size: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     transition: transform 0.7s ease, color 0.7s ease, background-color 0.7s ease;
 }
@@ -489,19 +492,19 @@ select {
     overflow: hidden;
     cursor: pointer;
     background-color: #4907b4;
-    width: calc(100% - 20px);
-    margin: 10px;
-    border-radius: 10px;
+    width: calc(100% - 1.2rem);
+    margin: 0.6rem;
+    border-radius: 0.6rem;
     border-color: #282828;
-    border-width: 0px;
-    font-size: 20px;
+    border-width: 0rem;
+    font-size: 1.5rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     transition: 0.7s ease;
 }
 
 .list-button:hover {
 transform: scale(1.01);
-font-size: 21px;
+font-size: 104%;
 background-color: #eeeeee;
 color:#4907b4;
 }
@@ -516,14 +519,14 @@ cursor: wait;
     cursor: pointer;
     overflow: hidden;
     background-color: #4907b4;
-    width: calc(12.5% - 20px);
-    min-height: calc(100% - 30px);
+    width: calc(12.5% - 1.2rem);
+    min-height: calc(100% - 2rem);
     float: left;
-    margin: 15px 10px;
-    border-radius: 10px;
+    margin: 1rem 0.6rem;
+    border-radius: 0.6rem;
     border-color: #282828;
-    border-width: 0px;
-    font-size: 16px;
+    border-width: 0rem;
+    font-size: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     transition: 0.7s ease;
 }
@@ -541,36 +544,36 @@ cursor: wait;
 }
 
 .icon {
-    width: calc(5% - 20px);
-    height: calc(100% - 20px);
+    width: calc(5% - 1.2rem);
+    height: calc(100% - 1.2rem);
     float: left;
-    margin: 10px;
+    margin: 0.6rem;
     cursor: pointer;
 }
 
 .button-icon{
-    width: calc(15% - 10px);
-    height: calc(100% - 10px);
-    margin: 5px;
+    width: calc(15% - 0.6rem);
+    height: calc(100% - 0.6rem);
+    margin: 0.3rem;
 }
 
 .navtitle {
     font-family: 'Arial', sans-serif;
     color: #762bf0;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 0.2rem;
     height: 100%;
-    margin: 10px;
-    font-size: 50px;
+    margin: 0.6rem;
+    font-size: 3.2rem;
     overflow: hidden;
-    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+    text-shadow: -0.125rem -0.125rem 0 #000, 0.125rem -0.125rem 0 #000, -0.125rem 0.125rem 0 #000, 0.125rem 0.125rem 0 #000;
 }
 
 .title-container {
     display: flex;
     float: left;
     width: calc(40%);
-    padding: 0px 5% 0px 5%;
+    padding: 0rem 5% 0rem 5%;
     height: calc(100%);
     text-align: center;
 }
@@ -583,10 +586,58 @@ html {
 body {
     background-color: #121212;
     height: 100%;
-    width: calc(100% - 20px);
+    width: calc(100% - 1.2rem);
 }
 
 .image-container {
     position: relative; /* Required for positioning the text relative to the container */
     display: inline-block; /* Maintain the image's size */
+  }
+
+  @media only screen and (max-width: 800px) {
+
+    .list-button {
+        font-size: 0rem;
+    }
+
+    .button-icon{
+        width: 100%;
+    }
+
+    .card {
+        width: calc(50% - 1.2rem);
+    }
+
+    .title-container {
+        display: none;
+    }
+
+    .navbutton {
+        width: 20%;
+    }
+    
+    .search-conatiner {
+        width: 100%;
+    }
+
+    .navbar .icon {
+        width: 10%;
+    }
+
+    .image-container h1 {
+        font-size: 2rem;
+    }
+
+    .system-message-data-container{
+        min-height: 12rem;
+    }
+
+    .message-item{
+        font-size: 3rem;
+    }
+
+    html {
+        font-size: 13px;
+    }
+    
   }
