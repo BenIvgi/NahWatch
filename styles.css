@@ -14,32 +14,30 @@
     content: "";
     display: flex;
     clear: both;
-    width: 35%;
-    height: 3%;
+    width: fit-content;
+    height: calc(5% - 1.2rem);
     border-radius: 0.3rem;
     background-color: #9f5af8;
     margin: 0.6rem;
 }
 
 .rating .icon {
-    margin: 0.3rem;
+    float: right;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin: 0.6rem;
 }
 
 .vote-count {
-    float: right;
+    margin: 0.6rem 0.3rem;
     color:#eeeeee;
-    font-size: 1rem;
-    text-align:right;
-    padding-right: 0.3rem;
-    margin-top: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .rating-data{
-    float: right;
+    margin: 0.6rem 0.3rem;
     color:#eeeeee;
-    font-size: 1rem;
-    margin: 0.5rem 0.3rem 0.3rem 0.3rem;
-    padding-right: 0.3rem;
+    font-size: 1.4rem;
 }
 
 .description {
@@ -247,13 +245,14 @@
 }
 
 .overlay-text {
-    position: absolute; /* Position the text relative to the container */
-    top: 75%; /* Adjust vertical position as needed */
-    left: 0%; /* Adjust horizontal position as needed */
+    width: calc(100% - 1.2rem);
+    height: 100%;
     transform: translate(0%, -20%); /* Center the text within the container */
     color: white; /* Text color */
     padding: 0.6rem; /* Add padding to the text for better readability */
-    font-size: 1rem;
+    font-size: 4rem;
+    vertical-align: bottom;
+    line-height: 1;
     font-weight: bold; /* Adjust font weight as needed */
   }
 
@@ -613,11 +612,16 @@ body {
     }
 
     .navbutton {
-        width: 20%;
+        width: 25%;
+        margin: 1rem 0.3rem;
     }
     
     .search-conatiner {
         width: 100%;
+    }
+
+    .search-button {
+        width: 40%;
     }
 
     .navbar .icon {
@@ -637,7 +641,7 @@ body {
     }
 
     html {
-        font-size: 13px;
+        font-size: 12px;
     }
     
   }
